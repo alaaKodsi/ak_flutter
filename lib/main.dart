@@ -1,3 +1,4 @@
+import 'package:aktest/splashScreen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const AkTest(),
+      home: const SplashScreen(),
     );
   }
 }
@@ -41,6 +42,6 @@ class _AkTestState extends State<AkTest> {
           ),
           centerTitle: true,
         ),
-        body: const Center());
+        body: Center(child: Image.asset("assets/image/AK Flutter.png")));
   }
 }
