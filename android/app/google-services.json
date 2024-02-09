@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "731944924807",
+    "project_id": "ak-flut",
+    "storage_bucket": "ak-flut.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:731944924807:android:4cf1a171be9ee71c4a2a22",
+        "android_client_info": {
+          "package_name": "com.example.aktest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnV7-R8gioNSs-uEuBFc5JvkboWu-gjX8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
