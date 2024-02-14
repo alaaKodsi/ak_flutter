@@ -1,3 +1,4 @@
+import 'package:aktest/webView.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -44,6 +45,26 @@ class _AkTestState extends State<AkTest> {
           ),
           centerTitle: true,
         ),
-        body: Center(child: Image.asset("assets/image/AK Flutter.png")));
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                "assets/image/AK Flutter.png",
+                width: 250,
+                height: 200,
+              ),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const WebView()));
+                  },
+                  child: const Text(
+                    "Open Web Page",
+                    style: TextStyle(color: Colors.black54),
+                  ))
+            ],
+          ),
+        ));
   }
 }
