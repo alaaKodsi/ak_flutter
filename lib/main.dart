@@ -1,4 +1,4 @@
-import 'package:aktest/view/screen/loginPage.dart';
+import 'package:aktest/view/screen/onbordingPage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -20,41 +20,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const LoginPage(),
+      home: const OnbordingPage(),
     );
-  }
-}
-
-class AkTest extends StatefulWidget {
-  const AkTest({super.key});
-
-  @override
-  State<AkTest> createState() => _AkTestState();
-}
-
-class _AkTestState extends State<AkTest> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.black87,
-          title: const Text(
-            "AK Flutter",
-            style: TextStyle(color: Colors.white),
-          ),
-          centerTitle: true,
-        ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                "assets/image/AK Flutter.png",
-                width: 300,
-                height: 300,
-              ),
-            ],
-          ),
-        ));
   }
 }
