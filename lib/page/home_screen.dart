@@ -16,19 +16,20 @@ class _HomePageState extends State<HomePage> {
   bool isLoading = false;
 
   void _fetchLocation() async {
-    try {
-      setState(() {
-        isLoading = true;
-      });
+    setState(() {
+      isLoading = true;
+    });
 
-      final result = await apiService.getLocation("100.42.176.0");
+    final result = await apiService.getLocation("100.42.176.0");
+
+    if (result is Success<Location, Exception>) {
       setState(() {
-        location = result;
+        location = result.value;
         isLoading = false;
       });
-    } catch (e) {
-      print("Error is: $e");
+    } else if (result is Failure<Location, Exception>) {
       setState(() {
+        print("Error is: ${result.exception}");
         isLoading = false;
       });
     }
