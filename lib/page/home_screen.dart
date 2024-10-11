@@ -11,23 +11,23 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final ApiService apiService = ApiService();
+  final apiService = ApiService();
   Location? location;
   bool isLoading = false;
 
   void _fetchLocation() async {
-    setState(() {
-      isLoading = true;
-    });
-
     try {
-      final result = await apiService.getLocation("ipAddress");
+      setState(() {
+        isLoading = true;
+      });
+
+      final result = await apiService.getLocation("100.42.176.0");
       setState(() {
         location = result;
+        isLoading = false;
       });
     } catch (e) {
-      print('Error fetching location: $e');
-    } finally {
+      print("Error is: $e");
       setState(() {
         isLoading = false;
       });
@@ -35,32 +35,35 @@ class _HomePageState extends State<HomePage> {
   }
 
   @override
-  void initState() {
-    super.initState();
-    _fetchLocation();
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: const Text('IP Location'),
       ),
-      body: Center(
-        child: isLoading
-            ? const CircularProgressIndicator()
-            : location != null
-                ? Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text('Country: ${location!.country}'),
-                      Text('City: ${location!.city}'),
-                      Text('Region: ${location!.regionName}'),
-                      Text('ISP: ${location!.isp}'),
-                      Text('Timezone: ${location!.timezone}'),
-                    ],
-                  )
-                : const Text('No location data available'),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(
+            child: isLoading
+                ? const CircularProgressIndicator()
+                : location != null
+                    ? Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('Country: ${location!.country}'),
+                          Text('City: ${location!.city}'),
+                          Text('Region: ${location!.regionName}'),
+                          Text('ISP: ${location!.isp}'),
+                          Text('Timezone: ${location!.timezone}'),
+                        ],
+                      )
+                    : const Text('No location data available'),
+          ),
+          ElevatedButton(
+              onPressed: () => _fetchLocation(),
+              child: const Text("Get Location"))
+        ],
       ),
     );
   }
